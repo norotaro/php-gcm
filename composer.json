@@ -1,5 +1,5 @@
 {
-  "name": "php-gcm/php-gcm",
+  "name": "norotaro/php-gcm",
   "description": "A PHP library for sending GCM messages",
   "keywords": ["library", "gcm", "php", "android"],
   "homepage": "https://github.com/lkorth/php-gcm",
