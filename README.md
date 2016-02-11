@@ -40,7 +40,7 @@ Usage
 -------
 ```php
 $sender = new Sender($gcmApiKey);
-$message = new Message($collapseKey, $payloadData);
+$message = new Message($payloadData, $options);
 
 try {
     $result = $sender->send($message, $deviceRegistrationId, $numberOfRetryAttempts);
