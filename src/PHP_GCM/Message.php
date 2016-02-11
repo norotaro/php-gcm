@@ -19,25 +19,32 @@ class Message {
   private $timeToLive;
   private $data;
   private $restrictedPackageName;
+  private $contentAvailable;
+  private $priority;
 
   /**
    * Message Constructor
    *
-   * @param string $collapseKey
    * @param array $data
-   * @param int $timeToLive
-   * @param bool $delayWhileIdle
-   * @param string $restrictedPackageName
-   * @param bool $dryRun
+   * @param array $options
    */
-  public function __construct($collapseKey = '', array $data = array(), $timeToLive = 2419200,
-    $delayWhileIdle = false, $restrictedPackageName = '', $dryRun = false) {
-      $this->collapseKey = $collapseKey;
+  public function __construct(array $data = array(), array $options = array()) {
+      $defaultOptions = array(
+        'collapseKey' => '',
+        'timeToLive' => 2419200,
+        '$delayWhileIdle' => false,
+        'restrictedPackageName' => '',
+        'dryRun' => false,
+        'contentAvailable' => true,
+        'priority' => 'high',
+      );
+      
+      $options = array_merge($defaultOptions, $options);
+      
+      foreach ( $options as $k=>$opt ) {
+        $this->{$k} = $opt;
+      }
       $this->data = $data;
-      $this->timeToLive = $timeToLive;
-      $this->delayWhileIdle = $delayWhileIdle;
-      $this->restrictedPackageName = $restrictedPackageName;
-      $this->dryRun = $dryRun;
     }
 
   /**
