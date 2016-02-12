@@ -13,6 +13,8 @@ class Message {
   const DATA = 'data';
   const NOTIFICATION = 'notification';
   const TO = 'to';
+  const CONTENT_AVAILABLE = 'contentAvailable';
+  const PRIORITY = 'priority';
 
   private $collapseKey;
   private $delayWhileIdle;
@@ -202,6 +204,8 @@ class Message {
     $message[self::DELAY_WHILE_IDLE] = $this->delayWhileIdle;
     $message[self::TIME_TO_LIVE] = $this->timeToLive;
     $message[self::DRY_RUN] = $this->dryRun;
+    $message[self::CONTENT_AVAILABLE] = $this->contentAvailable;
+    $message[self::PRIORITY] = $this->priority;
 
     if ($this->restrictedPackageName != '') {
       $message[self::RESTRICTED_PACKAGE_NAME] = $this->restrictedPackageName;
