@@ -11,12 +11,14 @@ class Message {
   const RESTRICTED_PACKAGE_NAME = 'restricted_package_name';
   const REGISTRATION_IDS = 'registration_ids';
   const DATA = 'data';
+  const NOTIFICATION = 'notification';
   const TO = 'to';
 
   private $collapseKey;
   private $delayWhileIdle;
   private $dryRun;
   private $timeToLive;
+  private $notification;
   private $data;
   private $restrictedPackageName;
   private $contentAvailable;
@@ -25,10 +27,10 @@ class Message {
   /**
    * Message Constructor
    *
-   * @param array $data
+   * @param array $notification
    * @param array $options
    */
-  public function __construct(array $data = array(), array $options = array()) {
+  public function __construct(array $notification = array(), array $options = array()) {
       $defaultOptions = array(
         'collapseKey' => '',
         'timeToLive' => 2419200,
@@ -44,7 +46,8 @@ class Message {
       foreach ( $options as $k=>$opt ) {
         $this->{$k} = $opt;
       }
-      $this->data = $data;
+      
+      $this->notification = $notification;
     }
 
   /**
@@ -206,6 +209,10 @@ class Message {
 
     if (!is_null($this->data) && count($this->data) > 0) {
       $message[self::DATA] = $this->data;
+    }
+
+    if (!is_null($this->notification) && count($this->notification) > 0) {
+      $message[self::NOTIFICATION] = $this->notification;
     }
 
     return json_encode($message);
