@@ -4,7 +4,7 @@ namespace PHP_GCM;
 
 class Sender {
 
-  const GCM_ENDPOINT = 'https://gcm-http.googleapis.com/gcm/send';
+  const GCM_ENDPOINT = 'https://fcm.googleapis.com/fcm/send';
   const BACKOFF_INITIAL_DELAY = 1000;
   const MAX_BACKOFF_DELAY = 1024000;
   const SUCCESS = 'success';
